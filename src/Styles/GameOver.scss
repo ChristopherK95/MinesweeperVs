@@ -1,0 +1,68 @@
+.GameOver {
+  background-color: rgb(41, 44, 54);
+  border-radius: 5px;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  z-index: 100;
+  width: 350px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  flex-direction: column;
+  align-items: center;
+
+  .Title {
+    color: white;
+    font-size: 45px;
+    margin: 0;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    color: white;
+  }
+
+  button {
+    background-color: #ff4747;
+    color: white;
+    padding: 10px 20px;
+    font-size: 22px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #ff6e6e;
+  }
+
+  .WaitingDiv {
+    width: 100%;
+    height: 90px;
+    text-align: center;
+
+    h2 {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  div {
+    .Ready {
+      fill: rgb(23, 252, 118);
+      display: inline-block;
+      width: 20px;
+      margin: 0 5px;
+    }
+    .NotReady {
+      fill: gray;
+      display: inline-block;
+      width: 20px;
+      margin: 0 5px;
+    }
+  }
+}

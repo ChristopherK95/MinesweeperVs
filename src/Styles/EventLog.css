@@ -1,0 +1,116 @@
+.EventLog {
+  width: 400px;
+  height: 600px;
+  background-color: #1b1820e3;
+  margin-right: 100px;
+  border: solid 5px #383a48;
+  border-radius: 5px;
+  -webkit-box-shadow: -5px 5px 4px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: -5px 5px 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+.EventLog .Top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: solid 5px #383a48;
+  margin: 0 20px;
+  height: 70px;
+}
+
+.EventLog .Top h2 {
+  color: white;
+}
+
+.EventLog .Events {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 0 10px;
+  height: 520px;
+  overflow-y: auto;
+}
+
+.EventLog .Events ol {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  list-style: none;
+  padding: 0 5px;
+}
+
+.EventLog .Events ol li {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: first baseline;
+      -ms-flex-align: first baseline;
+          align-items: first baseline;
+  white-space: pre;
+  margin-bottom: 5px;
+  padding: 2px;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: solid 3px white;
+}
+
+.EventLog .Events ol li .Name {
+  color: #2c352f;
+  font-weight: bolder;
+  font-size: 20px;
+  padding-left: 5px;
+  border-right: solid 5px #c9c9c9;
+  padding-right: 5px;
+  width: 95px;
+}
+
+.EventLog .Events ol li .X {
+  color: #2c352f;
+  font-weight: 700;
+  font-size: 20px;
+  padding-left: 30px;
+}
+
+.EventLog .Events ol li .Y {
+  color: #2c352f;
+  font-weight: 700;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.EventLog .Events ol li .Score {
+  color: #2c352f;
+  font-weight: 700;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.EventLog .Events ol li:hover {
+  border: solid 3px #ff9100;
+}
+/*# sourceMappingURL=EventLog.css.map */

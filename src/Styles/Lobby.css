@@ -1,0 +1,383 @@
+@font-face {
+  font-family: "Rubik One";
+  src: url("../Fonts/RubikOne-Regular.ttf");
+}
+
+.lobby {
+  background: #29292b;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.lobby .content {
+  padding: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.lobby .content .Input-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.lobby .content .Input-container p {
+  background-color: white;
+  padding: 12px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  bottom: 0;
+  left: 105%;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #343741;
+  margin-bottom: 16px;
+  -webkit-box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+.lobby .content .Input-container p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid white;
+}
+
+.lobby .content label {
+  font-size: 30px;
+  font-family: "Rubik One";
+  text-align: left;
+  width: 250px;
+  color: white;
+}
+
+.lobby .content input {
+  width: 250px;
+  font-size: 30px;
+  font-family: Segoe UI;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  margin-bottom: 10px;
+  border: 5px inset #434753;
+}
+
+.lobby .content input:focus {
+  outline-offset: -5px;
+  outline-style: solid;
+  outline-width: 5px;
+  outline-color: #3c6af5;
+}
+
+.lobby .content .buttons-div {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 80px;
+}
+
+.lobby .content .buttons-div button {
+  background-color: #ff4747;
+  color: white;
+  padding: 10px 20px;
+  margin: 20px;
+  font-family: "Rubik One", sans-serif;
+  font-size: 35px;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  width: 200px;
+}
+
+.lobby .content .buttons-div button:hover {
+  background-color: #ff6e6e;
+}
+
+.Lobby {
+  background: #29292b;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+  width: 600px;
+  height: 500px;
+}
+
+.Lobby .Top {
+  padding: 10px;
+  background-color: #ff4747;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+}
+
+.Lobby .Top .Name-div {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Lobby .Top .Name-div label {
+  font-size: 30px;
+  text-align: left;
+  color: white;
+  margin-right: 10px;
+  font-weight: bolder;
+  margin-top: -5px;
+}
+
+.Lobby .Top .Name-div input {
+  width: 180px;
+  font-size: 22px;
+  font-family: Segoe UI;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.Lobby .Top .Name-div input:focus {
+  outline: none;
+}
+
+.Lobby .Top .Name-div p {
+  background-color: white;
+  padding: 5px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  position: absolute;
+  top: 50%;
+  left: 105%;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #413434;
+  margin: 0;
+  -webkit-box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.Lobby .Top .Name-div p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid white;
+}
+
+.Lobby .Body {
+  height: 100%;
+}
+
+.Lobby .Body .Join-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 100%;
+  height: 55%;
+}
+
+.Lobby .Body .Join-div h2 {
+  color: white;
+  font-size: 28px;
+  background-color: #222224;
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 0 20px 0;
+}
+
+.Lobby .Body .Join-div .Code-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 80%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Lobby .Body .Join-div label {
+  font-size: 30px;
+  font-family: "Rubik One";
+  text-align: left;
+  width: 250px;
+  color: white;
+}
+
+.Lobby .Body .Join-div input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 250px;
+  height: 50px;
+  font-size: 30px;
+  font-family: Segoe UI;
+  font-weight: bold;
+  padding: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  outline: none;
+  border: solid 3px white;
+}
+
+.Lobby .Body .Join-div input:focus {
+  border: solid 3px #ff4747;
+}
+
+.Lobby .Body .Join-div button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #ff4747;
+  color: white;
+  padding: 10px 20px;
+  font-family: "Rubik One", sans-serif;
+  font-size: 25px;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  height: 50px;
+}
+
+.Lobby .Body .Join-div button .Icon {
+  width: 25px;
+  height: 25px;
+}
+
+.Lobby .Body .Join-div button:hover {
+  background-color: #ff6e6e;
+}
+
+.Lobby .Body .Create-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 45%;
+}
+
+.Lobby .Body .Create-div h2 {
+  color: white;
+  font-size: 28px;
+  background-color: #222224;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.Lobby .Body .Create-div button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #ff4747;
+  color: white;
+  padding: 10px 20px;
+  font-family: "Rubik One", sans-serif;
+  font-size: 32px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Lobby .Body .Create-div button .Icon {
+  width: 40px;
+  margin-left: 15px;
+}
+
+.Lobby .Body .Create-div button:hover {
+  background-color: #ff6e6e;
+}
+/*# sourceMappingURL=Lobby.css.map */

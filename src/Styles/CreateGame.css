@@ -1,0 +1,280 @@
+@font-face {
+  font-family: "Rubik One";
+  src: url("../Fonts/RubikOne-Regular.ttf");
+}
+
+.Create-game {
+  width: 450px;
+  height: 800px;
+  background: #434753;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.Create-game .Top-bar {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: white;
+  padding-bottom: 10px;
+  background-color: #ff4747;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.Create-game .Top-bar h2 {
+  font-size: 40px;
+  margin: 5px;
+}
+
+.Create-game .Body {
+  height: auto;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Create-game .Body .Title {
+  color: white;
+  font-size: 32px;
+  background-color: #31343e;
+  padding: 10px 0;
+  text-align: center;
+  margin: 0 0 15px 0;
+  width: 100%;
+}
+
+.Create-game .Body .Code {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Create-game .Body .Code h3 {
+  width: 200px;
+  font-size: 24px;
+  margin: 0 0 15px 0;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.Create-game .Body .Code h3:hover {
+  background-color: #c9c9c9;
+}
+
+.Create-game .Body .Code .clicked {
+  background-color: #a5a5a5;
+}
+
+.Create-game .Body .Settings .Setting {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+  position: relative;
+  height: 60px;
+}
+
+.Create-game .Body .Settings .Setting .Counter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  right: 20px;
+}
+
+.Create-game .Body .Settings .Setting .Counter input {
+  margin-left: 10px;
+  padding: 0;
+  text-align: center;
+  width: 50px;
+  height: 40px;
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.Create-game .Body .Settings .Setting .Counter .Buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 2px;
+}
+
+.Create-game .Body .Settings .Setting .Counter .Buttons :first-child {
+  margin-bottom: 1px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.Create-game .Body .Settings .Setting .Counter .Buttons :last-child {
+  margin-top: 1px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.Create-game .Body .Settings .Setting .Counter .Buttons :last-child svg {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.Create-game .Body .Settings .Setting .Counter .Buttons .button {
+  background-color: #ff4747;
+  border: none;
+  width: 30px;
+  height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.Create-game .Body .Settings .Setting .Counter .Buttons .button svg {
+  width: 20px;
+}
+
+.Create-game .Body .Settings .Setting .Counter .Buttons .button:hover {
+  background-color: #fa7a7a;
+}
+
+.Create-game .Body .Settings .Setting h3 {
+  color: white;
+  font-size: 24px;
+  margin: 0 0 0 15px;
+}
+
+.Create-game .Body .Settings .Setting p {
+  color: white;
+  margin-left: 5px;
+  position: absolute;
+  bottom: 10px;
+  margin: 0 0 0 15px;
+  font-size: 14px;
+}
+
+.Create-game .Body .Players .Player {
+  height: 50px;
+  background-color: #ff4747;
+  color: white;
+  padding-left: 15px;
+  border-radius: 5px;
+  margin: 2px 2px 10px 2px;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.Create-game .Body .Players .Player i {
+  width: 25px;
+  height: 15px;
+  margin-left: 10px;
+}
+
+.Create-game .Body .Players .Player h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.Create-game .Body .Players .Player h2 span {
+  font-size: 18px;
+}
+
+.Create-game .Bottom-bar {
+  height: auto;
+  width: calc(100% - 20px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Create-game .Bottom-bar .ErrorText {
+  margin: 0 0 8px 0;
+  color: red;
+  font-weight: bold;
+}
+
+.Create-game .Bottom-bar button {
+  font-size: 40px;
+  font-family: "Rubik One";
+  background-color: #0fd84c;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 8px 25px;
+  cursor: pointer;
+}
+
+.Create-game .Bottom-bar button:disabled {
+  -webkit-filter: grayscale(100);
+          filter: grayscale(100);
+  cursor: default;
+  pointer-events: none;
+}
+
+.Create-game .Bottom-bar button:hover {
+  background-color: #00a531;
+}
+/*# sourceMappingURL=CreateGame.css.map */

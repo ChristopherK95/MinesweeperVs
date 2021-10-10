@@ -1,0 +1,45 @@
+.Disconnected {
+  background-color: #292c36;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.6);
+          box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  z-index: 100;
+  width: 350px;
+  height: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Disconnected h2 {
+  font-size: 36px;
+  color: #ff5370;
+  margin: 0 0 20px 0;
+}
+
+.Disconnected button {
+  background-color: #ff4747;
+  color: white;
+  padding: 10px 20px;
+  font-size: 32px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/*# sourceMappingURL=Disconnected.css.map */
