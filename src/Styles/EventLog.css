@@ -1,12 +1,14 @@
 .EventLog {
   width: 400px;
-  height: 600px;
+  height: 100%;
   background-color: #1b1820e3;
-  margin-right: 100px;
+  margin-right: 50px;
   border: solid 5px #383a48;
   border-radius: 5px;
   -webkit-box-shadow: -5px 5px 4px 5px rgba(0, 0, 0, 0.5);
           box-shadow: -5px 5px 4px 5px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  right: 100%;
 }
 
 .EventLog .Top {
@@ -18,7 +20,7 @@
           justify-content: center;
   border-bottom: solid 5px #383a48;
   margin: 0 20px;
-  height: 70px;
+  height: 10%;
 }
 
 .EventLog .Top h2 {
@@ -33,7 +35,7 @@
       -ms-flex-pack: start;
           justify-content: flex-start;
   padding: 0 10px;
-  height: 520px;
+  height: 88%;
   overflow-y: auto;
 }
 

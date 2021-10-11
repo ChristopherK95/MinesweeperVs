@@ -1,12 +1,43 @@
+@font-face {
+  font-family: "Lovelo";
+  src: url("../Fonts/Lovelo-LineBold.ttf");
+}
+
 .App {
-  background: linear-gradient(to left, #181522, #1f1e22);
+  background-image: url("../Img/BombAndFlagBackground.png");
+  background-color: #b04646;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
+  #Title {
+    position: absolute;
+    top: 60px;
+    padding: 40px 0px;
+    border-radius: 5px;
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+
+    h1 {
+      margin: 0;
+      color: white;
+      font-size: 80px;
+      font-family: "Lovelo";
+      text-align: center;
+      line-height: 60px;
+      text-shadow: 3px 3px 6px #ffffff9c;
+
+      span {
+        font-size: 50px;
+      }
+    }
+  }
+
   .Container {
     display: flex;
+    position: relative;
   }
 }

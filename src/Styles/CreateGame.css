@@ -6,7 +6,7 @@
 .Create-game {
   width: 450px;
   height: 800px;
-  background: #434753;
+  background: #29292b;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5);
@@ -31,7 +31,7 @@
           flex-direction: row;
   color: white;
   padding-bottom: 10px;
-  background-color: #ff4747;
+  background-color: #e14141;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -56,7 +56,7 @@
 .Create-game .Body .Title {
   color: white;
   font-size: 32px;
-  background-color: #31343e;
+  background-color: #222224;
   padding: 10px 0;
   text-align: center;
   margin: 0 0 15px 0;
@@ -128,7 +128,7 @@
   text-align: center;
   width: 50px;
   height: 40px;
-  font-size: 20px;
+  font-size: 18px;
   pointer-events: none;
 }
 
@@ -198,7 +198,7 @@
 
 .Create-game .Body .Players .Player {
   height: 50px;
-  background-color: #ff4747;
+  background-color: #e14141;
   color: white;
   padding-left: 15px;
   border-radius: 5px;

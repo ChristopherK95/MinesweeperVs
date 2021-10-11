@@ -26,7 +26,7 @@ export function EventLog({ tileRef, events }) {
       <div className="Events">
         <ol reversed>
           {events &&
-            events.map((event: Event) =>
+            events.map((event: Event, index: number) =>
               event.info !== undefined ? (
                 <li
                   onMouseEnter={() =>
@@ -37,6 +37,7 @@ export function EventLog({ tileRef, events }) {
                     )
                   }
                   onMouseLeave={highlightOff}
+                  key={index}
                 >
                   <span className="Name">{event.user}</span>
                   <span className="X">X: {event.info.position.x}</span>
@@ -53,6 +54,7 @@ export function EventLog({ tileRef, events }) {
                     )
                   }
                   onMouseLeave={highlightOff}
+                  key={index}
                 >
                   <span className="Name">{event.user}</span>
                   <span className="X">{event.text}</span>

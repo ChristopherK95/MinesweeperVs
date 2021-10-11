@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Repeatable from "react-repeatable";
 import { useContext, useEffect, useState } from "react";
 import "../Styles/CreateGame.css";
@@ -143,7 +144,7 @@ export function CreateGame({ admin, playerOne, gameCode }) {
   }
 
   function calcBombTileRatio() {
-    if (bombsSetting / (tileAmount * tileAmount) >= 0.7) {
+    if (bombsSetting / (tileAmount * tileAmount) >= 0.5) {
       setTooManyBombs(true);
     } else {
       setTooManyBombs(false);
@@ -161,14 +162,12 @@ export function CreateGame({ admin, playerOne, gameCode }) {
 
   useEffect(() => {
     calcBombTileRatio();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bombsSetting, tileAmount]);
 
   useEffect(() => {
     handleDisconnected();
     if (!admin) return;
     awaitPlayerTwo();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -176,7 +175,6 @@ export function CreateGame({ admin, playerOne, gameCode }) {
     handleTileAmountSetting();
     handleBombsSetting();
     handleRoundTimeSetting();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -199,7 +197,11 @@ export function CreateGame({ admin, playerOne, gameCode }) {
           <div className="Setting">
             <h3>Amount of tiles</h3>
             <div className="Counter">
-              <input type="text" readOnly={true} value={tileAmount} />
+              <input
+                type="text"
+                readOnly={true}
+                value={`${tileAmount}x${tileAmount}`}
+              />
               {admin && (
                 <div className="Buttons">
                   <Repeatable
@@ -223,7 +225,7 @@ export function CreateGame({ admin, playerOne, gameCode }) {
                 </div>
               )}
             </div>
-            <p>(default: 50 bombs out of 225 tiles)</p>
+            <p>(default: 12 by 12 tiles)</p>
           </div>
           <div className="Setting">
             <h3>Amount of bombs</h3>

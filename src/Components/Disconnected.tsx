@@ -7,6 +7,7 @@ export function Disconnected({ socket, roomId }) {
   const {
     isAdmin,
     playerTwo,
+    isInRoom,
     setInRoom,
     setGameStarted,
     setGameCode,
@@ -30,7 +31,6 @@ export function Disconnected({ socket, roomId }) {
   }
 
   function leaveCreateRoom() {
-    console.log(roomId);
     gameService.leaveGameRoom(socket, roomId);
     setCreatingRoom(false);
     setDisconnected(false);
@@ -48,7 +48,9 @@ export function Disconnected({ socket, roomId }) {
       ) : (
         <div className="Disconnected">
           <h2>The Host left</h2>
-          <button onClick={isAdmin ? leaveGame : leaveCreateRoom}>Leave</button>
+          <button onClick={isInRoom ? leaveGame : leaveCreateRoom}>
+            Leave
+          </button>
         </div>
       )}
     </div>

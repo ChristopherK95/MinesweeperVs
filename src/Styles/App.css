@@ -1,6 +1,11 @@
+@font-face {
+  font-family: "Lovelo";
+  src: url("../Fonts/Lovelo-LineBold.ttf");
+}
+
 .App {
-  background: -webkit-gradient(linear, right top, left top, from(#181522), to(#1f1e22));
-  background: linear-gradient(to left, #181522, #1f1e22);
+  background-image: url("../Img/BombAndFlagBackground.png");
+  background-color: #b04646;
   width: 100vw;
   height: 100vh;
   display: -webkit-box;
@@ -14,9 +19,38 @@
           align-items: center;
 }
 
+.App #Title {
+  position: absolute;
+  top: 60px;
+  padding: 40px 0px;
+  border-radius: 5px;
+  width: 30vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.App #Title h1 {
+  margin: 0;
+  color: white;
+  font-size: 80px;
+  font-family: "Lovelo";
+  text-align: center;
+  line-height: 60px;
+  text-shadow: 3px 3px 6px #ffffff9c;
+}
+
+.App #Title h1 span {
+  font-size: 50px;
+}
+
 .App .Container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
 }
 /*# sourceMappingURL=App.css.map */

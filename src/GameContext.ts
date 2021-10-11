@@ -67,7 +67,7 @@ const defaultState: IGameContextProps = {
   playerOne: { name: "", score: 0, id: "" },
   playerTwo: { name: "", score: 0, id: "" },
   tileArr: [],
-  tileAmount: 15,
+  tileAmount: 12,
   bombsSetting: 50,
   roundTimeSetting: 30,
   roundTime: 30,
