@@ -1,4 +1,4 @@
-# Minesweeper Versus
+# [Minesweeper Versus](https://minesweeper-versus-client.herokuapp.com/)
 
 ## Introduction
 
