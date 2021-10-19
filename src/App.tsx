@@ -40,8 +40,8 @@ function App() {
   const connectSocket = async () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const socket = await socketService
-      .connect("http://localhost:9000")
-      // .connect("https://minesweeper-versus-server.herokuapp.com/")
+      // .connect("http://localhost:9000")
+      .connect("https://minesweeper-versus-server.herokuapp.com/")
       .catch((err) => {
         console.log("Error: ", err);
       });
