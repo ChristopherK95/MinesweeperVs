@@ -3,12 +3,20 @@
   src: url("../Fonts/RubikOne-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Lovelo";
+  src: url("../Fonts/Lovelo-LineBold.ttf");
+}
+
 .Board {
   position: relative;
+  -webkit-box-shadow: -5px 5px 4px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: -5px 5px 4px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
 
 .Board .TopPanel {
-  height: 150px;
+  height: 105px;
   background-color: #ff4747;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -21,32 +29,75 @@
   border-top-right-radius: 10px;
 }
 
-.Board .TopPanel .Player-count {
-  text-align: center;
-  color: white;
-  padding: 10px;
+.Board .TopPanel .PlayerTurn {
+  position: absolute;
+  top: -20px;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+  left: 50%;
+  color: #262628;
+  -webkit-box-shadow: 0 0 4px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 4px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  border: solid 5px #262628;
+  background-color: #21ff76;
+  max-height: 72px;
+  max-width: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  padding: 0 10px;
+}
+
+.Board .TopPanel .PlayerTurn :first-child {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.Board .TopPanel .PlayerTurn :last-child {
+  margin-left: 10px;
+}
+
+.Board .TopPanel .PlayerTurn h1 {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.Board .TopPanel .Opponent {
+  background-color: #ff4747;
+}
+
+.Board .TopPanel .Player-count {
+  width: 50%;
+  text-align: center;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100px;
+  height: 100%;
+  position: relative;
+}
+
+.Board .TopPanel .Player-count .Shade {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
 }
 
 .Board .TopPanel .Player-count h2 {
-  position: absolute;
   font-size: 24px;
-  top: 20px;
-  margin: 0;
+  margin: 10px;
   text-shadow: 2px 2px 2px #0000009d;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
 }
 
 .Board .TopPanel .Player-count .Score-count {
@@ -58,16 +109,31 @@
   font-family: Segoe UI;
   font-weight: bold;
   border-radius: 5px;
+  position: absolute;
 }
 
 .Board .TopPanel .Player-one {
-  position: absolute;
-  left: 20px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.Board .TopPanel .Player-one .Score-count {
+  right: 10px;
 }
 
 .Board .TopPanel .Player-two {
-  position: absolute;
-  right: 20px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.Board .TopPanel .Player-two .Score-count {
+  left: 10px;
 }
 
 .Board .TopPanel .Bombs-count {
@@ -119,7 +185,7 @@
 .Board .Border {
   display: -ms-grid;
   display: grid;
-  border: solid 15px #353537;
+  border: solid 15px #262628;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: black;
@@ -128,8 +194,8 @@
 
 .Board .Border .Tile {
   background-color: #ff5370;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -140,16 +206,11 @@
       -ms-flex-pack: center;
           justify-content: center;
   cursor: default;
-  border-left: 5px outset #ff758d;
-  border-top: 5px outset #ff758d;
-  border-bottom: 5px outset #fa2f52;
-  border-right: 5px outset #fa2f52;
-  border-radius: 3px;
-  margin: 1px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  background-size: cover;
 }
 
 .Board .Border .Tile i {
@@ -165,8 +226,14 @@
           justify-content: center;
 }
 
+.Board .Border .Tile:hover {
+  -webkit-filter: brightness(1.4);
+          filter: brightness(1.4);
+}
+
 .Board .Border .highlight {
-  border: 5px solid #ff9100 !important;
+  -webkit-filter: brightness(1.4);
+          filter: brightness(1.4);
 }
 
 .Board .Border .Tile:hover {
@@ -174,10 +241,9 @@
 }
 
 .Board .Border .Clicked-tile {
-  background-color: white;
-  width: 30px;
-  height: 30px;
-  border: 5px solid white;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -188,8 +254,6 @@
       -ms-flex-pack: center;
           justify-content: center;
   cursor: default;
-  margin: 1px;
-  border-radius: 3px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -202,11 +266,9 @@
 }
 
 .Board .Border .Bomb-tile {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   background-color: #ff3c3c;
-  border: 5px solid #ff3c3c;
-  border-radius: 3px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -216,17 +278,11 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 1px;
+  background-size: cover;
 }
 
 .Board .Border .Bomb-tile i {
   height: 30px;
   width: 28px;
-}
-
-.Board .Border .Pause-window {
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
 /*# sourceMappingURL=Game.css.map */

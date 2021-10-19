@@ -4,7 +4,7 @@ import "../Styles/EventLog.css";
 
 export function EventLog({ tileRef, events }) {
   const [highlightedTile, setHighlightedTile] = useState<number>(0);
-  const { tileAmount } = useContext(GameContext);
+  const { tileAmount, playerOne } = useContext(GameContext);
 
   function highlightTile(pos: { x: number; y: number } | string) {
     if (typeof pos === "string") return;
@@ -29,6 +29,9 @@ export function EventLog({ tileRef, events }) {
             events.map((event: Event, index: number) =>
               event.info !== undefined ? (
                 <li
+                  className={
+                    event.user === playerOne.name ? "PlayerOne" : "PlayerTwo"
+                  }
                   onMouseEnter={() =>
                     highlightTile(
                       event.info !== undefined
@@ -46,6 +49,9 @@ export function EventLog({ tileRef, events }) {
                 </li>
               ) : (
                 <li
+                  className={
+                    event.user === playerOne.name ? "PlayerOne" : "PlayerTwo"
+                  }
                   onMouseEnter={() =>
                     highlightTile(
                       event.info !== undefined

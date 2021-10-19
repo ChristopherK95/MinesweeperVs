@@ -38,11 +38,15 @@ class GameService {
     socket.emit("start_game", { totalBombs, roundTime });
   }
 
-  public async prepareGame(socket: Socket, bombs: number, tileAmount: number) {
-    return new Promise<Array<Tile>>((rs) => {
-      socket.emit("prepare_game", {bombs, tileAmount});
-      socket.on("game_setup", (arr: Array<Tile>) => rs(arr))
+  public async prepareGame(socket: Socket, bombs: number, tileAmount: number, id: number, tileArr: Tile[]) {
+    return new Promise<{tileArr: Tile[], score: number, event: Event}>((rs) => {
+      socket.emit("prepare_game", {bombs, tileAmount, id, tileArr});
+      socket.on("game_setup1", (message:{tileArr: Tile[], score: number, event: Event}) => rs(message))
     })
+  }
+
+  public async onInitiate(socket: Socket, listener: (message: {tileArr: Tile[], score: number, event: Event}) => void) {
+    socket.on("game_setup2", (message: { tileArr: Tile[], score: number, event: Event}) => listener(message))
   }
 
   public async tileClick(socket: Socket, arr: Tile[], score: number, event: Event) {
@@ -51,9 +55,9 @@ class GameService {
     })
   }
 
-  public async gameOver(socket: Socket, arr: Tile[], score: number, event: Event) {
+  public async gameOver(socket: Socket, arr: Tile[], score: number, event: Event, players: {playerOne: Player, playerTwo: Player}) {
     return new Promise<Tile>(() => {
-      socket.emit("game_over", { arr, score, event });
+      socket.emit("game_over", { arr, score, event, players });
     })
   }
 
@@ -101,8 +105,8 @@ class GameService {
     socket.on("start_game", (message: { turn: string, totalBombs: number, roundTime: number }) => listener(message));
   }
 
-  public async onGameOver(socket: Socket, listener: (message: {arr: Tile[], score: number, event: Event}) => void) {
-    socket.on("on_game_over", (message: {arr: Tile[], score: number, event: Event}) => listener(message));
+  public async onGameOver(socket: Socket, listener: (message: {arr: Tile[], score: number, event: Event, players: {playerOne: Player, playerTwo: Player}}) => void) {
+    socket.on("on_game_over", (message: {arr: Tile[], score: number, event: Event, players: {playerOne: Player, playerTwo: Player}}) => listener(message));
   }
 
   public async onReady(socket: Socket, listener: () => void) {

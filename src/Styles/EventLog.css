@@ -37,6 +37,7 @@
   padding: 0 10px;
   height: 88%;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .EventLog .Events ol {
@@ -86,9 +87,11 @@
   font-weight: bolder;
   font-size: 20px;
   padding-left: 5px;
-  border-right: solid 5px #c9c9c9;
+  border-right: solid 5px #2c352f;
   padding-right: 5px;
   width: 95px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .EventLog .Events ol li .X {
@@ -114,5 +117,15 @@
 
 .EventLog .Events ol li:hover {
   border: solid 3px #ff9100;
+}
+
+.EventLog .Events ol .PlayerOne {
+  background-color: #21ff76;
+  border-color: #21ff76;
+}
+
+.EventLog .Events ol .PlayerTwo {
+  background-color: #ff4747;
+  border-color: #ff4747;
 }
 /*# sourceMappingURL=EventLog.css.map */

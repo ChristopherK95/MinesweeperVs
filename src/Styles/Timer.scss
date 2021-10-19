@@ -1,0 +1,51 @@
+.Timer {
+  height: 100%;
+  width: 50px;
+  position: absolute;
+  right: -10px;
+  transform: translateX(100%);
+  border: solid 5px #262628;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+
+  .Remainder {
+    height: 100%;
+    width: 100%;
+    background-color: #21ff76;
+    border-radius: 5px;
+  }
+
+  .Time {
+    background-color: white;
+    position: absolute;
+    top: -10px;
+    transform: translateY(-100%);
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border: solid 5px #262628;
+    border-radius: 5px;
+  }
+
+  .NoAnimate {
+    transition: none !important;
+  }
+
+  .TimerAnimation {
+    animation-name: countDown;
+  }
+
+  @keyframes countDown {
+    from {
+      height: 100%;
+    }
+    to {
+      height: 0px;
+    }
+  }
+}

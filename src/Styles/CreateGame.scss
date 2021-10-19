@@ -103,13 +103,11 @@
             margin-left: 2px;
 
             :first-child {
-              // border-bottom: 1px solid;
               margin-bottom: 1px;
               border-top-left-radius: 2px;
               border-top-right-radius: 2px;
             }
             :last-child {
-              // border-top: 1px solid;
               margin-top: 1px;
               border-bottom-left-radius: 2px;
               border-bottom-right-radius: 2px;
@@ -157,7 +155,8 @@
 
     .Players {
       .Player {
-        height: 50px;
+        max-height: 65px;
+        min-height: 50px;
         background-color: #e14141;
         color: white;
         padding-left: 15px;
@@ -177,6 +176,8 @@
         h2 {
           font-size: 24px;
           margin: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
 
           span {
             font-size: 18px;

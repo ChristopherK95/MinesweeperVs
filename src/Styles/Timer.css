@@ -1,0 +1,75 @@
+.Timer {
+  height: 100%;
+  width: 50px;
+  position: absolute;
+  right: -10px;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  border: solid 5px #262628;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.Timer .Remainder {
+  height: 100%;
+  width: 100%;
+  background-color: #21ff76;
+  border-radius: 5px;
+}
+
+.Timer .Time {
+  background-color: white;
+  position: absolute;
+  top: -10px;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  font-size: 30px;
+  font-weight: bold;
+  width: 100%;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  border: solid 5px #262628;
+  border-radius: 5px;
+}
+
+.Timer .NoAnimate {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+
+.Timer .TimerAnimation {
+  -webkit-animation-name: countDown;
+          animation-name: countDown;
+}
+
+@-webkit-keyframes countDown {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0px;
+  }
+}
+
+@keyframes countDown {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0px;
+  }
+}
+/*# sourceMappingURL=Timer.css.map */

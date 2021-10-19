@@ -197,7 +197,8 @@
 }
 
 .Create-game .Body .Players .Player {
-  height: 50px;
+  max-height: 65px;
+  min-height: 50px;
   background-color: #e14141;
   color: white;
   padding-left: 15px;
@@ -222,6 +223,8 @@
 .Create-game .Body .Players .Player h2 {
   font-size: 24px;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .Create-game .Body .Players .Player h2 span {

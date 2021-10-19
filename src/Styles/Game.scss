@@ -3,11 +3,18 @@
   src: url("../Fonts/RubikOne-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Lovelo";
+  src: url("../Fonts/Lovelo-LineBold.ttf");
+}
+
 .Board {
   position: relative;
+  box-shadow: -5px 5px 4px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 
   .TopPanel {
-    height: 150px;
+    height: 105px;
     background-color: #ff4747;
     display: flex;
     align-items: center;
@@ -15,22 +22,66 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
+    .PlayerTurn {
+      position: absolute;
+      top: -20px;
+      transform: translate(-50%, -100%);
+      left: 50%;
+      color: #262628;
+      box-shadow: 0 0 4px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      border: solid 5px #262628;
+      background-color: #21ff76;
+      max-height: 72px;
+      max-width: 400px;
+      display: flex;
+      padding: 0 10px;
+
+      :first-child {
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      :last-child {
+        margin-left: 10px;
+      }
+
+      h1 {
+        margin: 0;
+        padding: 10px 0;
+      }
+    }
+
+    .Opponent {
+      background-color: #ff4747;
+    }
+
     .Player-count {
+      width: 50%;
       text-align: center;
       color: white;
-      padding: 10px;
       display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
       align-items: center;
-      height: 100px;
+      height: 100%;
+      position: relative;
+
+      .Shade {
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        border-top-left-radius: 9px;
+        border-top-right-radius: 9px;
+      }
 
       h2 {
-        position: absolute;
         font-size: 24px;
-        top: 20px;
-        margin: 0;
+        margin: 10px;
         text-shadow: 2px 2px 2px #0000009d;
+        max-width: 140px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 5px;
       }
 
       .Score-count {
@@ -42,17 +93,25 @@
         font-family: Segoe UI;
         font-weight: bold;
         border-radius: 5px;
+        position: absolute;
       }
     }
 
     .Player-one {
-      position: absolute;
-      left: 20px;
+      justify-content: flex-start;
+
+      .Score-count {
+        right: 10px;
+      }
     }
 
     .Player-two {
-      position: absolute;
-      right: 20px;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+
+      .Score-count {
+        left: 10px;
+      }
     }
 
     .Bombs-count {
@@ -90,7 +149,7 @@
 
   .Border {
     display: grid;
-    border: solid 15px #353537;
+    border: solid 15px #262628;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: black;
@@ -98,19 +157,18 @@
 
     .Tile {
       background-color: rgb(255, 83, 112);
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: default;
-      border-left: 5px outset #ff758d;
-      border-top: 5px outset #ff758d;
-      border-bottom: 5px outset #fa2f52;
-      border-right: 5px outset #fa2f52;
-      border-radius: 3px;
-      margin: 1px;
+      // border-left: 5px outset #ff758d;
+      // border-top: 5px outset #ff758d;
+      // border-bottom: 5px outset #fa2f52;
+      // border-right: 5px outset #fa2f52;
       user-select: none;
+      background-size: cover;
 
       i {
         width: 20px;
@@ -120,8 +178,13 @@
       }
     }
 
+    .Tile:hover {
+      filter: brightness(1.4);
+    }
+
     .highlight {
-      border: 5px solid rgb(255, 145, 0) !important;
+      // border: 5px solid rgb(255, 145, 0) !important;
+      filter: brightness(1.4);
     }
 
     .Tile:hover {
@@ -129,16 +192,17 @@
     }
 
     .Clicked-tile {
-      background-color: white;
-      width: 30px;
-      height: 30px;
-      border: 5px solid white;
+      // background-color: white;
+      background-size: cover;
+      width: 40px;
+      height: 40px;
+      // border: 5px solid white;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: default;
-      margin: 1px;
-      border-radius: 3px;
+      // margin: 1px;
+      // border-radius: 3px;
       user-select: none;
 
       i {
@@ -148,26 +212,19 @@
     }
 
     .Bomb-tile {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       background-color: rgb(255, 60, 60);
-      border: 5px solid rgb(255, 60, 60);
-      border-radius: 3px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 1px;
+      background-size: cover;
+      // background-image: url("../Img/Explosion.png");
 
       i {
         height: 30px;
         width: 28px;
       }
-    }
-
-    .Pause-window {
-      position: absolute;
-      width: 100%;
-      height: 100%;
     }
   }
 }

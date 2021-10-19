@@ -4,10 +4,9 @@ import useSound from "use-sound";
 import gameService from "../services/gameService";
 import socketService from "../services/socketService";
 import gameContext, { Player, Event, Tile } from "../GameContext";
-import { ReactComponent as Bomb } from "../SVG/BombSVG.svg";
-import { ReactComponent as Flag } from "../SVG/FlagSVG.svg";
 import { GameOver } from "./GameOver";
 import { Disconnected } from "./Disconnected";
+import { Timer } from "./Timer";
 import "../Styles/Game.css";
 import newTurn from "../Audio/NewTurn.mp3";
 import disconnect from "../Audio/Disconnect.mp3";
@@ -96,11 +95,30 @@ export function Game({ tileRef, tileAmount, setEvents }) {
       gameService.onGameOver(socket, (message) => {
         setEvents((events: Event[]) => [message.event, ...events]);
         setTileArr(message.arr);
+        console.log("P2:", message.players.playerOne);
+        console.log("P1:", message.players.playerTwo);
+        setPlayerTwo(message.players.playerOne);
+        setPlayerOne(message.players.playerTwo);
+        setTimeout(() => {
+          gameOver(message.players);
+        }, 1000);
+      });
+    }
+  }
+
+  function handleInitateGame() {
+    if (socket) {
+      gameService.onInitiate(socket, (message) => {
+        console.log("prepped");
+        setEvents((events: Event[]) => [message.event, ...events]);
+        setTileArr(message.tileArr);
         const updatedPlayer: Player = { ...playerTwo, score: message.score };
         setPlayerTwo(updatedPlayer);
-        setTimeout(() => {
-          gameOver();
-        }, 1000);
+        setPlayerTurn(true);
+        setGamePrepped(true);
+        if (isAdmin) {
+          setRoundTime(roundTimeSetting);
+        }
       });
     }
   }
@@ -110,6 +128,13 @@ export function Game({ tileRef, tileAmount, setEvents }) {
   /////////////////////////////////////////
 
   function tileClick(id: number) {
+    if (!gameIsPrepped && isPlayerTurn) {
+      prepGame(id);
+      setPlayerTurn(false);
+      setRoundTime(roundTimeSetting);
+      clickFx();
+      return;
+    }
     if (!isPlayerTurn) return;
     if (!socket || tileArr[id].clicked) return;
     clickFx();
@@ -141,13 +166,10 @@ export function Game({ tileRef, tileAmount, setEvents }) {
       setBombs(bombsAmount);
     }
     const tiles: number = countTiles(arr);
-    console.log(tiles);
     if (tiles <= 0) {
-      gameService.gameOver(socket, arr, score, event);
+      gameService.gameOver(socket, arr, score, event, { playerOne, playerTwo });
       setTileArr(arr);
-      setTimeout(() => {
-        gameOver();
-      }, 1500);
+      gameOver(null);
       return;
     }
     if (tileArr[id].count === 0 && tileArr[id].mine === false) {
@@ -175,10 +197,19 @@ export function Game({ tileRef, tileAmount, setEvents }) {
   //////////////// METHODS ////////////////
   /////////////////////////////////////////
 
-  async function prepGame() {
+  async function prepGame(id: number) {
     if (!socket) return;
-    const arr = await gameService.prepareGame(socket, bombs, tileAmount);
-    setTileArr(arr);
+    const message = await gameService.prepareGame(
+      socket,
+      bombs,
+      tileAmount,
+      id,
+      tileArr
+    );
+    setEvents((events: Event[]) => [message.event, ...events]);
+    setTileArr(message.tileArr);
+    const updatedPlayer: Player = { ...playerOne, score: message.score };
+    setPlayerOne(updatedPlayer);
     setRoundTimeSetting(roundTime);
     setGamePrepped(true);
   }
@@ -191,11 +222,20 @@ export function Game({ tileRef, tileAmount, setEvents }) {
     setEvents((events: Event[]) => [event, ...events]);
   }
 
-  function gameOver() {
-    if (playerOne.score > playerTwo.score) {
-      setWinner(true);
+  function gameOver(players: { playerOne: Player; playerTwo: Player } | null) {
+    if (players === null) {
+      setTimeout(() => {}, 700);
+      if (playerOne.score > playerTwo.score) {
+        setWinner(true);
+      }
+      setStop(true);
+    } else {
+      setTimeout(() => {}, 700);
+      if (players.playerTwo.score > players.playerOne.score) {
+        setWinner(true);
+      }
+      setStop(true);
     }
-    setStop(true);
   }
 
   async function restartGame() {
@@ -206,12 +246,12 @@ export function Game({ tileRef, tileAmount, setEvents }) {
       setPlayerTwo(player2);
       setBombs(bombsSetting);
       setFlags(defaultFlags);
-      const arr = await gameService.prepareGame(
-        socket,
-        bombsSetting,
-        tileAmount
-      );
+      const arr: Tile[] = tileArr;
+      for (let i = 0; i < tileArr.length; i++) {
+        arr[i].clicked = false;
+      }
       setTileArr(arr);
+      setGamePrepped(false);
       setPlayerTurn(isWinner);
       setWinner(false);
       setEvents([]);
@@ -339,14 +379,28 @@ export function Game({ tileRef, tileAmount, setEvents }) {
   /////////////////////////////////////////
 
   useEffect(() => {
-    if (!gameIsPrepped) {
-      prepGame();
+    const arr: Tile[] = [];
+    let id = 0;
+    for (let i = 0; i < tileAmount; i++) {
+      for (let j = 0; j < tileAmount; j++) {
+        const tile: Tile = {
+          clicked: false,
+          id: id,
+          position: { x: j, y: i },
+          mine: false,
+          count: 0,
+          highlight: false,
+        };
+        arr.push(tile);
+        id++;
+      }
     }
+    setTileArr(arr);
   }, []);
 
   // Countdown timer.
   useEffect(() => {
-    if (socket && isAdmin && !stop) {
+    if (socket && isAdmin && !stop && gameIsPrepped) {
       const interval = setInterval(() => {
         if (roundTime > 0) {
           const time = roundTime - 1;
@@ -377,12 +431,13 @@ export function Game({ tileRef, tileAmount, setEvents }) {
       }
       return () => clearInterval(interval);
     }
-  }, [roundTime]);
+  }, [roundTime, gameIsPrepped]);
 
   // Runs the eventhandlers.
   useEffect(() => {
     handleGameUpdate();
     handleGameOver();
+    handleInitateGame();
 
     if (!isAdmin) {
       handleTimeUpdate();
@@ -407,16 +462,23 @@ export function Game({ tileRef, tileAmount, setEvents }) {
     <div className="Board">
       {disconnected && <Disconnected socket={socket} roomId={""} />}
       {stop && !disconnected && <GameOver restart={restartGame} />}
+      <Timer
+        time={roundTime}
+        newTurn={isPlayerTurn}
+        gameIsPrepped={gameIsPrepped}
+      />
       <div className="TopPanel">
+        <div className={`PlayerTurn ${!isPlayerTurn ? "Opponent" : ""}`}>
+          <h1>{isPlayerTurn ? "Your " : playerTwo.name + "'s "}</h1>
+          <h1>turn</h1>
+        </div>
         <div className="Player-count Player-one">
+          {!isPlayerTurn && <div className="Shade"></div>}
           <h2>{playerOne && playerOne.name}</h2>
           <div className="Score-count">{playerOne && playerOne.score}</div>
         </div>
-        <div className="Bombs-count">
-          <h2>{isPlayerTurn ? "Your Turn" : "Opponents Turn"}</h2>
-          <div>{roundTime}s</div>
-        </div>
         <div className="Player-count Player-two">
+          {isPlayerTurn && <div className="Shade"></div>}
           <h2>{playerTwo && playerTwo.name}</h2>
           <div className="Score-count">{playerTwo && playerTwo.score}</div>
         </div>
@@ -440,21 +502,31 @@ export function Game({ tileRef, tileAmount, setEvents }) {
                     ? "Clicked-tile"
                     : "Tile"
                 }${tile.highlight ? "highlight" : ""}`}
+                style={{
+                  backgroundImage:
+                    !tile.mine && tile.clicked
+                      ? `url(Number/${tile.count}.png)`
+                      : tile.mine && tile.clicked
+                      ? "url(Explosion.png)"
+                      : flags[tile.id] && !tile.clicked
+                      ? "url(Flagged.png)"
+                      : "url(Tile.png)",
+                }}
                 key={tile.id}
               >
-                {tile.clicked && tile.mine ? (
+                {/* {tile.clicked && tile.mine ? (
                   <i>
                     <Bomb />
                   </i>
-                ) : tile.clicked && !tile.mine && tile.count > 0 ? (
-                  tile.count
-                ) : flags[tile.id] ? (
+                ) : // ) : tile.clicked && !tile.mine && tile.count > 0 ? (
+                //   tile.count
+                flags[tile.id] ? (
                   <i>
                     <Flag />
                   </i>
                 ) : (
                   ""
-                )}
+                )} */}
               </div>
             );
           })}

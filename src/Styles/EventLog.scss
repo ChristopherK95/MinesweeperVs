@@ -27,6 +27,7 @@
     padding: 0 10px;
     height: 88%;
     overflow-y: auto;
+    scrollbar-width: thin;
 
     ol {
       position: relative;
@@ -56,9 +57,11 @@
           font-weight: bolder;
           font-size: 20px;
           padding-left: 5px;
-          border-right: solid 5px #c9c9c9;
+          border-right: solid 5px rgb(44, 53, 47);
           padding-right: 5px;
           width: 95px;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .X {
@@ -85,6 +88,16 @@
 
       li:hover {
         border: solid 3px rgb(255, 145, 0);
+      }
+
+      .PlayerOne {
+        background-color: #21ff76;
+        border-color: #21ff76;
+      }
+
+      .PlayerTwo {
+        background-color: #ff4747;
+        border-color: #ff4747;
       }
     }
   }
